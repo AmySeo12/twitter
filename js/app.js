@@ -1,14 +1,19 @@
 window.onload=function() {
+    var conta = 1;
 	var contador = document.getElementById("contador");
     var button = document.getElementById("button");
     button.addEventListener("click", function(e) {
-    	e.preventDefault();
+    	e.preventDefault(); 
     	var text = document.getElementById("textArea");
 		agregarMensajes(text.value);
 		text.value = "";
 		contador.textContent= "140";
         button.disabled= true;
         button.classList.remove("background");
+        var span = 
+        document.getElementById("tweets").innerHTML= conta;
+        conta ++;
+        textArea.setAttribute("rows", 3);
     });
 
     function agregarMensajes(texto){
@@ -17,6 +22,12 @@ window.onload=function() {
 		mensaje.classList.add("cuadro");
 		mensaje.innerHTML= texto;
 		mensajes.insertBefore(mensaje, mensajes.childNodes[0]);
+        /*var horaActual = new Date ();
+        var hora = horaActual.getHours();
+        var minuto = horaActual.getMinutes();
+        var span = document.createElement("h5");
+        span.innerHTML= hora + ":"+ minuto;
+        mensaje.insertBefore(span, mensaje.childNodes[0]);*/
     }
     var max = 140;
     var publicacion =  document.getElementById("textArea");
@@ -36,7 +47,9 @@ window.onload=function() {
 
     	contadorText(longitud,contador,max);
     	colocarColor(longitud, max, contador, boton);
-    	heightTextArea ();
+        calcularRows(publicacion);
+        heightTextArea();
+
     });
 
     function contadorText(longitud, contador, max){
@@ -68,7 +81,16 @@ window.onload=function() {
         if(breakLines){
             var breaks = breakLines.length > 2 ? breakLines.length + 1 : 3;
             texto.setAttribute("rows", breaks);
-        } else
-            texto.setAttribute("rows", 3);
+        } 
     };
+
+    function calcularRows(publicacion){
+        var rows = publicacion.getAttribute("rows");
+        var cols = publicacion.getAttribute("cols");
+        var producto = cols * rows;
+        if(publicacion.value.length >= producto){
+            publicacion.setAttribute("rows", parseInt(rows)+1);
+        }else
+            publicacion.setAttribute("rows", rows);
+    }
 }
