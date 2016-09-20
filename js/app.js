@@ -22,12 +22,12 @@ window.onload=function() {
 		mensaje.classList.add("cuadro");
 		mensaje.innerHTML= texto;
 		mensajes.insertBefore(mensaje, mensajes.childNodes[0]);
-        /*var horaActual = new Date ();
+        var horaActual = new Date ();
         var hora = horaActual.getHours();
         var minuto = horaActual.getMinutes();
         var span = document.createElement("h5");
         span.innerHTML= hora + ":"+ minuto;
-        mensaje.insertBefore(span, mensaje.childNodes[0]);*/
+        mensaje.insertBefore(span, mensaje.childNodes[0]);
     }
     var max = 140;
     var publicacion =  document.getElementById("textArea");
