@@ -2,15 +2,41 @@
 <html>
 	<head>
 		<title>Text-Area</title>
+		<link rel="stylesheet" href="css/bootstrap.css">
 		<link rel="stylesheet" type="text/css" href="css/main.css">
 	</head>
 	<body>
-		<form id="formulario">
-			<textarea id="textArea"></textarea>
-			<button id="button" type="submit" disabled>Publicar</button>
-			<div id="contador">140</div>
-		</form>
-		<div id="contenedor"></div>
+		<section class="container">
+			<div class="row">
+				<div class="col-xs-3 pt-3">
+					<section class="fondo-blue borde-bottom borde"></section>
+					<section class="fondo-white borde-top borde"></section>
+					<div class="foto"><img src="img/foto-perfil.jpg" class="foto-perfil"></div>
+					<span class="nombre">Thiago Alburqueque</span>
+					<span class="cuenta">@ThiagoValentino</span>
+					<div class="row absolute">
+						<div class="col-xs-6 line">
+							<span class="textos">TWEETS</span>
+							<h4 class="cuentas">0</h4>
+						</div>
+						<div class="col-xs-6 line">
+							<span class="textos">SIGUIENDO</span>
+							<h4 class="cuentas">36</h4>
+						</div>
+					</div>
+				</div>
+				<div class="col-xs-7 pt-3">
+					<section class="comentarios">
+						<form id="formulario">
+							<textarea id="textArea" cols= "30" rows="3"></textarea>
+							<button id="button" type="submit" disabled  class="background1">Publicar</button>
+							<div id="contador">140</div>
+						</form>
+					</section>
+					<div id="contenedor"></div>
+			</div>
+				</div>
+		</section>
 
 		<script type="text/javascript" src="js/app.js"></script>
 	</body>

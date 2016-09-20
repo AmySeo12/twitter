@@ -6,7 +6,9 @@ window.onload=function() {
     	var text = document.getElementById("textArea");
 		agregarMensajes(text.value);
 		text.value = "";
-		contador.textContent= "";
+		contador.textContent= "140";
+        button.disabled= true;
+        button.classList.remove("background");
     });
 
     function agregarMensajes(texto){
@@ -21,14 +23,20 @@ window.onload=function() {
     publicacion.addEventListener("keyup", function(){
     	var boton = document.getElementById("button");
     	var longitud = this.value.length;
+    	var breakLines = this.value.match(/\n/g);
 
-    	if (this.value.length >0 )
+    	if (this.value.trim().length == 0){
+    		boton.disabled= true;
+            boton.classList.remove("background");
+        }
+    	else{
     		boton.disabled= false;
-    	else
-    		boton.disabled=true;
+            boton.classList.add("background");
+        }
 
     	contadorText(longitud,contador,max);
     	colocarColor(longitud, max, contador, boton);
+    	heightTextArea ();
     });
 
     function contadorText(longitud, contador, max){
@@ -43,16 +51,24 @@ window.onload=function() {
     		boton.disabled = true;
     	}
     	else if(longitud >= 130){
-    		contador.style.color= "#8E0404";
+    		contador.style.color= "green";
     		boton.disabled = false;
     	}
     	else if(longitud >= 120){
     		contador.style.color= "blue";
     		boton.disabled = false;
     	}
-    	else{
-    		contador.style.color= "black";
-    		boton.disabled = false;
-    	}
+    	else
+    		contador.style.color= "grey";
     }
+    function heightTextArea () {
+        var texto = document.getElementById("textArea");
+        var breakLines = texto.value.match(/\n/g);
+
+        if(breakLines){
+            var breaks = breakLines.length > 2 ? breakLines.length + 1 : 3;
+            texto.setAttribute("rows", breaks);
+        } else
+            texto.setAttribute("rows", 3);
+    };
 }
