@@ -6,7 +6,7 @@ window.onload=function() {
     	var text = document.getElementById("textArea");
 		agregarMensajes(text.value);
 		text.value = "";
-		contador.textContent= "140";
+		contador.textContent= "";
     });
 
     function agregarMensajes(texto){
@@ -22,12 +22,13 @@ window.onload=function() {
     	var boton = document.getElementById("button");
     	var longitud = this.value.length;
 
-    	contadorText(longitud,contador,max);
-
     	if (this.value.length >0 )
     		boton.disabled= false;
     	else
     		boton.disabled=true;
+
+    	contadorText(longitud,contador,max);
+    	colocarColor(longitud, max, contador, boton);
     });
 
     function contadorText(longitud, contador, max){
@@ -35,5 +36,23 @@ window.onload=function() {
     		contador.textContent = max - longitud;
     	else
     		contador.textContent = max -longitud;
+    }
+    function colocarColor(longitud, max, contador, boton){
+    	if(longitud > max){
+    		contador.style.color="red";
+    		boton.disabled = true;
+    	}
+    	else if(longitud >= 130){
+    		contador.style.color= "#8E0404";
+    		boton.disabled = false;
+    	}
+    	else if(longitud >= 120){
+    		contador.style.color= "blue";
+    		boton.disabled = false;
+    	}
+    	else{
+    		contador.style.color= "black";
+    		boton.disabled = false;
+    	}
     }
 }
