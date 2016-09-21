@@ -74,6 +74,7 @@ window.onload=function() {
     	else
     		contador.style.color= "grey";
     }
+    
     function heightTextArea () {
         var texto = document.getElementById("textArea");
         var breakLines = texto.value.match(/\n/g);
