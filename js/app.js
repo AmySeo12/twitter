@@ -5,8 +5,8 @@ window.onload=function() {
     button.addEventListener("click", function(e) {
     	e.preventDefault(); 
     	var text = document.getElementById("textArea");
-		agregarMensajes(text.value);
-        text.value.replace(/\n/g, "<br>");
+        var res= text.value.replace(/\n/g, "<br>");
+		agregarMensajes(res);
 		text.value = "";
 		contador.textContent= "140";
         button.disabled= true;
