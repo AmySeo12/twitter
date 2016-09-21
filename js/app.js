@@ -6,6 +6,7 @@ window.onload=function() {
     	e.preventDefault(); 
     	var text = document.getElementById("textArea");
 		agregarMensajes(text.value);
+        text.value.replace(/\n/g, "<br>");
 		text.value = "";
 		contador.textContent= "140";
         button.disabled= true;
@@ -58,6 +59,7 @@ window.onload=function() {
     	else
     		contador.textContent = max -longitud;
     }
+
     function colocarColor(longitud, max, contador, boton){
     	if(longitud > max){
     		contador.style.color="red";
@@ -74,7 +76,7 @@ window.onload=function() {
     	else
     		contador.style.color= "grey";
     }
-    
+
     function heightTextArea () {
         var texto = document.getElementById("textArea");
         var breakLines = texto.value.match(/\n/g);
@@ -83,7 +85,7 @@ window.onload=function() {
             var breaks = breakLines.length > 2 ? breakLines.length + 1 : 3;
             texto.setAttribute("rows", breaks);
         } 
-    };
+    }
 
     function calcularRows(publicacion){
         var rows = publicacion.getAttribute("rows");
@@ -93,5 +95,7 @@ window.onload=function() {
             publicacion.setAttribute("rows", parseInt(rows)+1);
         }else
             publicacion.setAttribute("rows", rows);
+        /*publicacion.style.cssText = "height:auto; padding: 0";
+        publicacion.style.cssText = "height:" + publicacion.scrollHeight + "px";*/
     }
 }
